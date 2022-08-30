@@ -16,3 +16,4 @@ this project was written to learn some zig, here are some resources that i
 used:
 - [ziglang docs](https://ziglang.org/documentation/0.8.1/#Introduction)
 - [ziglearn.org](https://ziglearn.org/)
+- [zig build explained](https://zig.news/xq/zig-build-explained-part-1-59lf)
