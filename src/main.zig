@@ -1,6 +1,7 @@
 const std = @import("std");
 const c = @cImport({
     @cInclude("eisuu_utils.h");
+    @cInclude("libpng16/png.h");
 });
 
 const Point = struct { x: i32, y: i32 };
@@ -12,8 +13,7 @@ pub fn main() !void {
     defer arena.deinit();
     const allocator = &arena.allocator;
 
-    const sum = c.sum(1, 2);
-    std.debug.print("c sum function: {}\n", .{sum});
+    std.debug.print("using libpng version: {s}n", .{c.PNG_LIBPNG_VER_STRING});
 
     const args = try std.process.argsAlloc(allocator);
     defer std.process.argsFree(allocator, args);
@@ -23,12 +23,18 @@ pub fn main() !void {
     var file = try std.fs.cwd().openFile(args[1], .{ .read = true });
     defer file.close();
 
-    const buf = try file.reader().readAllAlloc(allocator, 1024);
-    defer allocator.free(buf);
+    // const buf = try file.reader().readAllAlloc(allocator, 1024);
+    // defer allocator.free(buf);
 
     // var help_flag = false;
     // var output_dim = Point{ .x = 20, .y = 20 };
     // for (args) |arg| {
     //     std.debug.print("arg: {s}\n", .{arg});
     // }
+
+    // c.readpng_init(file, 800, 600);
+
+    const header = try file.reader().readBytesNoEof(8);
+
+    const out = c.png_sig_cmp(@ptrCast([*c]const u8, &header), 0, 8);
 }
