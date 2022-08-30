@@ -1,4 +1,4 @@
 default: run
 
 run:
-    zig run main.zig
+    zig run eisuu.zig -lc -- testing
