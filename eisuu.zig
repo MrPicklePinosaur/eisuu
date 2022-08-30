@@ -13,7 +13,7 @@ pub fn main() !void {
     const allocator = &arena.allocator;
 
     const sum = c.sum(1, 2);
-    std.debug.print("c sum function: {s}\n", .{sum});
+    std.debug.print("c sum function: {}\n", .{sum});
 
     const args = try std.process.argsAlloc(allocator);
     defer std.process.argsFree(allocator, args);

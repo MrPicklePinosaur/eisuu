@@ -13,7 +13,7 @@ pub fn build(b: *Builder) void {
     exe.linkSystemLibrary("c");
     exe.linkLibC();
     exe.addIncludeDir("./lib");
-    exe.addCSourceFile("./lib/eisuu_utils.c", &c_args);
+    // exe.addCSourceFile("./lib/eisuu_utils.c", &c_args);
     exe.setTarget(target);
     exe.setBuildMode(mode);
     exe.install();

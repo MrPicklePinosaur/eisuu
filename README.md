@@ -9,3 +9,10 @@ image asciizer written in zig lang
 ## SETTING UP FOR DEVELOPMENT
 
 ensure that you are using zig 0.8.1
+
+## RESOURCES
+
+this project was written to learn some zig, here are some resources that i
+used:
+- [ziglang docs](https://ziglang.org/documentation/0.8.1/#Introduction)
+- [ziglearn.org](https://ziglearn.org/)

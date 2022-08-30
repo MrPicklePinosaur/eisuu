@@ -3,4 +3,10 @@
 
 int sum(int a, int b);
 
+int
+sum(int a, int b)
+{
+    return a + b;
+}
+
 #endif // __LIB_H__
