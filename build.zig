@@ -14,6 +14,7 @@ pub fn build(b: *Builder) void {
     exe.linkLibC();
     exe.addIncludeDir("./lib");
     exe.addIncludeDir("/usr/include/");
+    // exe.linkSystemLibrary("libpng");
     // exe.addCSourceFile("./lib/eisuu_utils.c", &c_args);
     exe.setTarget(target);
     exe.setBuildMode(mode);

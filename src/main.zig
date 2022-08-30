@@ -11,7 +11,7 @@ pub fn main() !void {
     // allocator setup
     var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena.deinit();
-    const allocator = &arena.allocator;
+    const allocator = arena.allocator();
 
     std.debug.print("using libpng version: {s}n", .{c.PNG_LIBPNG_VER_STRING});
 
@@ -36,5 +36,12 @@ pub fn main() !void {
 
     const header = try file.reader().readBytesNoEof(8);
 
-    const out = c.png_sig_cmp(@ptrCast([*c]const u8, &header), 0, 8);
+    // if (!c.png_check_sig(@ptrCast([*c]const u8, &header), 8)) {
+    //     std.debug.print("invalid png header\n", .{});
+    // }
+
+    const valid_header = c.png_sig_cmp(@ptrCast([*c]const u8, &header), 0, 8);
+    if (valid_header != 0) {
+        std.debug.print("invalid png header\n", .{});
+    }
 }

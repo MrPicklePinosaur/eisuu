@@ -8,7 +8,7 @@ image asciizer written in zig lang
 
 ## SETTING UP FOR DEVELOPMENT
 
-ensure that you are using zig 0.8.1
+ensure that you are using zig 0.9.1
 
 ## RESOURCES
 
